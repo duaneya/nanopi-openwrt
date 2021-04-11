@@ -6,7 +6,7 @@ on:
     inputs:
       device:
         description: 'select device to build'
-        default: 'r2s'
+        default: 'r1p'
         required: false
 
 jobs:
@@ -176,7 +176,7 @@ jobs:
       - name: Generate firmware
         run: |
           sudo sysctl vm.swappiness=0
-          curl -L https://github.com/klever1988/sshactions/releases/download/cache/ib-$DEVICE.tar.xz | tar -Jxvf -
+          curl -L https://github.com/klever1988/sshactions/releases/download/cache/ib-r2s.tar.xz | tar -Jxvf -
           mv *imagebuilder* ib && cd ib
           . $GITHUB_WORKSPACE/merge_files.sh
           mkdir -p files/local_feed && sudo mount --bind packages files/local_feed
